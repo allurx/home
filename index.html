@@ -1,0 +1,157 @@
+<!doctype html>
+<!-- Copyright 2026 allurx. SPDX-License-Identifier: Apache-2.0 -->
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="Allurx 的个人主页。写代码，做工具，记录思考。" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="zh_CN" />
+        <meta property="og:title" content="Allurx · 让想法慢慢生长" />
+        <meta property="og:description" content="写代码，做工具，记录思考。这里是 Allurx 的个人主页与作品入口。" />
+        <meta property="og:url" content="https://allurx.io/" />
+        <meta property="og:image" content="https://allurx.io/og-image.jpg" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Allurx 字标与环绕字母 A 的轨道图形" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href="https://allurx.io/" />
+        <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
+        <link rel="stylesheet" href="/src/styles.css" />
+        <script src="/theme.js"></script>
+        <script type="module" src="/src/main.ts"></script>
+        <title>Allurx · 让想法慢慢生长</title>
+    </head>
+    <body id="top">
+        <a class="skip-link" href="#main">跳到主要内容</a>
+        <div class="ambient" aria-hidden="true"></div>
+        <header class="site-header shell">
+            <a class="wordmark" href="/" aria-label="Allurx 首页">
+                <span>allurx<span class="wordmark-dot">.</span></span>
+            </a>
+            <div class="header-controls">
+                <nav aria-label="主导航">
+                    <a class="icon-link" href="#projects" aria-label="作品" title="作品">
+                        <svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <use href="/icons/ui.svg#projects" />
+                        </svg>
+                    </a>
+                    <a class="icon-link" href="https://github.com/allurx" aria-label="GitHub" title="GitHub">
+                        <svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <use href="/icons/ui.svg#github" />
+                        </svg>
+                    </a>
+                </nav>
+                <fieldset class="theme-switcher" hidden>
+                    <legend class="sr-only">外观</legend>
+                    <label class="theme-choice" title="跟随系统">
+                        <input class="sr-only" type="radio" name="theme" value="system" aria-label="跟随系统" checked />
+                        <svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <use href="/icons/ui.svg#system" />
+                        </svg>
+                    </label>
+                    <label class="theme-choice" title="浅色">
+                        <input class="sr-only" type="radio" name="theme" value="light" aria-label="浅色" />
+                        <svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <use href="/icons/ui.svg#sun" />
+                        </svg>
+                    </label>
+                    <label class="theme-choice" title="深色">
+                        <input class="sr-only" type="radio" name="theme" value="dark" aria-label="深色" />
+                        <svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <use href="/icons/ui.svg#moon" />
+                        </svg>
+                    </label>
+                </fieldset>
+            </div>
+        </header>
+        <main id="main" class="shell" tabindex="-1">
+            <section class="hero" aria-labelledby="intro-title">
+                <div class="hero-copy">
+                    <h1 id="intro-title">
+                        <span class="intro-greeting">你好，我是</span>
+                        <span class="name">Allurx<span class="name-dot">.</span></span>
+                    </h1>
+                    <p class="hero-line">让想法，<span>慢慢生长。</span></p>
+                    <p class="hero-description">写代码，做工具，记录思考。</p>
+                </div>
+                <div class="orbit-art" aria-hidden="true">
+                    <svg class="orbit-scene" viewBox="0 0 440 400" fill="none">
+                        <use href="/illustrations/orbit.svg#background" />
+                        <use class="orbit-emblem" href="/illustrations/orbit.svg#emblem" />
+                        <use href="/illustrations/orbit.svg#trail" />
+                        <use class="orbit-glint" href="/illustrations/orbit.svg#glint" />
+                    </svg>
+                </div>
+            </section>
+            <section id="projects" class="projects" aria-labelledby="projects-title">
+                <div class="section-heading">
+                    <h2 id="projects-title">作品</h2>
+                </div>
+                <div class="project-grid">
+                    <a
+                        class="project-card project-aura"
+                        href="https://aura.allurx.io/"
+                        aria-labelledby="aura-title"
+                        aria-describedby="aura-description"
+                    >
+                        <div class="project-art reader-art" aria-hidden="true">
+                            <img
+                                class="project-illustration"
+                                src="/illustrations/aura.svg"
+                                width="640"
+                                height="360"
+                                alt=""
+                            />
+                        </div>
+                        <div class="project-info">
+                            <div class="project-heading">
+                                <h3 id="aura-title">Aura <span>阅读器</span></h3>
+                                <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                    <use href="/icons/ui.svg#arrow-right" />
+                                </svg>
+                            </div>
+                            <p id="aura-description">打开一本书，让注意力回到文字本身。</p>
+                        </div>
+                    </a>
+                    <a
+                        class="project-card project-blog"
+                        href="https://blog.allurx.io/"
+                        aria-labelledby="blog-title"
+                        aria-describedby="blog-description"
+                    >
+                        <div class="project-art writing-art" aria-hidden="true">
+                            <img
+                                class="project-illustration"
+                                src="/illustrations/blog.svg"
+                                width="640"
+                                height="360"
+                                alt=""
+                            />
+                        </div>
+                        <div class="project-info">
+                            <div class="project-heading">
+                                <h3 id="blog-title">Blog <span>技术博客</span></h3>
+                                <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                    <use href="/icons/ui.svg#arrow-right" />
+                                </svg>
+                            </div>
+                            <p id="blog-description">记录编程中的探索与实践。</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </main>
+        <footer class="site-footer shell">
+            <p>© 2026 allurx</p>
+            <a class="icon-link" href="#top" aria-label="回到顶部" title="回到顶部">
+                <svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <use href="/icons/ui.svg#arrow-up" />
+                </svg>
+            </a>
+        </footer>
+        <span class="sr-only" role="status" id="theme-status"></span>
+    </body>
+</html>

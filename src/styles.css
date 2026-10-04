@@ -1,0 +1,616 @@
+/*
+ * Copyright 2026 allurx
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+@layer reset, base, layout, components, accessibility;
+
+@layer reset {
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+    body,
+    h1,
+    h2,
+    h3,
+    p {
+        margin: 0;
+    }
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+    svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+    [hidden] {
+        display: none !important;
+    }
+}
+
+@layer base {
+    /* 语义配色由 color-scheme 统一切换，系统偏好不另建脚本状态。 */
+    :root {
+        color-scheme: light dark;
+        --canvas: light-dark(#f8f9fc, #111827);
+        --surface: light-dark(#ffffff, #1c2638);
+        --ink: light-dark(#252d42, #e4e9f4);
+        --muted: light-dark(#647084, #a9b4c9);
+        --accent: light-dark(#535eb4, #b2befa);
+        --line: light-dark(#dfe3eb, #354057);
+        --soft: light-dark(#f0f1f7, #253047);
+        --glow-blue: light-dark(#d1e4ff99, #344c8252);
+        --glow-peach: light-dark(#f8dfcb80, #70534533);
+        --glow-purple: light-dark(#e4d8fb80, #54486f44);
+        --card-shadow: light-dark(#3340640c, #070b1730);
+        --focus: light-dark(#4659b6, #bcc8ff);
+        --radius: 1.5rem;
+        --gutter: clamp(1.25rem, 4.6vw, 3rem);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+        font-synthesis: none;
+        color: var(--ink);
+        background: var(--canvas);
+        text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+        scroll-behavior: smooth;
+
+        &[data-theme="light"] {
+            color-scheme: light;
+        }
+        &[data-theme="dark"] {
+            color-scheme: dark;
+        }
+    }
+
+    /* 文档排版与原生控件继承共同的文字、选择和焦点语义。 */
+    body {
+        min-width: 0;
+        font-size: 1rem;
+        line-height: 1.7;
+        isolation: isolate;
+    }
+    h1,
+    h2,
+    h3 {
+        line-height: 1.3;
+        font-weight: 600;
+        text-wrap: balance;
+    }
+    h2 {
+        font-size: clamp(1.65rem, 3vw, 2rem);
+        letter-spacing: -0.04em;
+    }
+    p {
+        text-wrap: pretty;
+    }
+    section[id],
+    main[id] {
+        scroll-margin-top: 2rem;
+    }
+    :focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 5px;
+        border-radius: 0.2rem;
+    }
+}
+
+@layer layout {
+    /* 页面容器与环境光不参与各内容区的内部布局。 */
+    .shell {
+        width: min(100% - var(--gutter) * 2, 65rem);
+        margin-inline: auto;
+    }
+    .ambient {
+        position: absolute;
+        inset: 0 0 auto;
+        height: 55rem;
+        pointer-events: none;
+        z-index: -1;
+        background:
+            radial-gradient(ellipse at 4% 3%, var(--glow-blue), transparent 45%),
+            radial-gradient(ellipse at 95% 23%, var(--glow-peach), transparent 44%),
+            radial-gradient(ellipse at 64% 46%, var(--glow-purple), transparent 44%);
+    }
+
+    /* 页首导航与首屏介绍。 */
+    .site-header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem 1rem;
+        padding-block: 1.5rem;
+
+        nav {
+            display: flex;
+            gap: 0.125rem;
+            align-items: center;
+        }
+    }
+    .header-controls {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: end;
+        gap: 0.625rem;
+        margin-inline-start: auto;
+        min-width: 0;
+        max-width: 100%;
+    }
+    .hero {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        align-items: center;
+        padding-block: 2.75rem 5rem;
+        gap: 1.5rem;
+
+        h1 {
+            line-height: 1;
+        }
+    }
+    .intro-greeting {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: clamp(1.25rem, 2.2vw, 1.625rem);
+        font-weight: 500;
+        line-height: 1.5;
+    }
+    .hero-copy {
+        min-width: 0;
+        container-type: inline-size;
+    }
+    .hero-line {
+        font-size: clamp(1.5rem, 3vw, 2.25rem);
+        font-weight: 500;
+        letter-spacing: -0.035em;
+        line-height: 1.6;
+        margin-top: 1.2rem;
+
+        > span {
+            color: var(--accent);
+        }
+    }
+    .hero-description {
+        margin-top: 1rem;
+        color: var(--muted);
+        font-size: 1.125rem;
+    }
+
+    /* 作品保留独立视觉空间，页尾与最后一张卡片之间留出呼吸感。 */
+    .projects {
+        padding-bottom: 4.5rem;
+
+        @media (width < 48rem) {
+            padding-bottom: 3.5rem;
+        }
+    }
+    .section-heading {
+        margin-bottom: 1.75rem;
+    }
+    .project-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+    }
+    .site-footer {
+        border-top: 1px solid var(--line);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem 1rem;
+        padding-block: 1.25rem;
+        color: var(--muted);
+
+        > p {
+            font-size: 0.875rem;
+        }
+    }
+
+    /* 根据内容所需空间切换布局，输入方式单独处理。 */
+    @media (width < 48rem) {
+        .hero {
+            grid-template-columns: 1fr 0.7fr;
+            padding-block: 3rem 4rem;
+        }
+        .project-grid {
+            gap: 1rem;
+        }
+    }
+    @media (width < 38rem) {
+        .site-header {
+            padding-block: 1rem;
+        }
+        .hero {
+            display: block;
+            padding-block: 2.5rem 3.5rem;
+        }
+        .hero .orbit-art {
+            display: none;
+        }
+        .project-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+    }
+}
+
+@layer components {
+    /* 品牌文字负责首屏表现，图标导航保留独立的可访问名称。 */
+    .wordmark {
+        display: inline-flex;
+        align-items: center;
+        min-height: 2.75rem;
+        font-size: 1.55rem;
+        letter-spacing: -0.065em;
+        font-weight: 650;
+    }
+    .wordmark-dot {
+        color: var(--accent);
+    }
+    .name-dot {
+        color: light-dark(#b36246, #eeb28e);
+    }
+    .name {
+        display: block;
+        width: fit-content;
+        padding-inline: 0.02em 0.09em;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: min(8rem, 28cqw);
+        font-style: italic;
+        font-weight: 500;
+        letter-spacing: -0.055em;
+        line-height: 1.1;
+        color: transparent;
+        background: linear-gradient(
+            115deg,
+            light-dark(#202e50, #f5f4ff) 15%,
+            light-dark(#3f47a4, #aebffc) 60%,
+            light-dark(#80508c, #e2bdfd)
+        );
+        background-clip: text;
+    }
+    .header-icon {
+        width: 1.25rem;
+        height: 1.25rem;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.6;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+    .icon-link {
+        display: grid;
+        place-items: center;
+        width: 2.75rem;
+        height: 2.75rem;
+        border-radius: 50%;
+        color: var(--muted);
+
+        @media (hover: hover) {
+            &:hover {
+                color: var(--ink);
+                background: var(--soft);
+            }
+        }
+    }
+    .link-icon {
+        width: 1.25rem;
+        height: 1.25rem;
+        flex-shrink: 0;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        transition: transform 180ms ease;
+    }
+    /* 三种外观直接呈现；原生单选提供键盘操作和唯一选中状态。 */
+    .theme-switcher {
+        display: flex;
+        flex-shrink: 1;
+        max-width: 100%;
+        min-inline-size: 0;
+        margin: 0;
+        padding: 0.1875rem;
+        border: 1px solid var(--line);
+        border-radius: 2rem;
+        background: var(--soft);
+    }
+    .theme-choice {
+        position: relative;
+        display: grid;
+        place-items: center;
+        width: 2.75rem;
+        height: 2.75rem;
+        flex: 1 1 2.75rem;
+        min-width: 44px;
+        border: 1px solid transparent;
+        border-radius: 50%;
+        color: var(--muted);
+        cursor: pointer;
+        transition:
+            color 160ms ease,
+            background-color 160ms ease;
+
+        &:has(input:checked) {
+            color: var(--accent);
+            border-color: var(--accent);
+            background: var(--surface);
+            box-shadow: 0 1px 3px var(--card-shadow);
+        }
+        &:has(input:focus-visible) {
+            outline: 2px solid var(--focus);
+            outline-offset: 2px;
+        }
+        @media (hover: hover) {
+            &:hover {
+                color: var(--ink);
+            }
+        }
+    }
+
+    /* 品牌插画保留单一视觉中心，不放置需要阅读的装饰文字。 */
+    .orbit-art {
+        --orbit-light: light-dark(#ffffff, #abb5e3);
+        --orbit-tint: light-dark(#ffffff00, #18397570);
+        --orbit-edge: light-dark(#a2aed8, #263759);
+        --orbit-mark: light-dark(#5365a4, #edf0ff);
+        position: relative;
+        width: 100%;
+        max-width: 27rem;
+        aspect-ratio: 1.1;
+        justify-self: end;
+    }
+    .orbit-emblem {
+        transition: transform 500ms ease;
+    }
+    .orbit-glint {
+        stroke-dashoffset: -130;
+        opacity: 0.8;
+        transition: stroke-dashoffset 900ms ease;
+    }
+    @media (hover: hover) and (pointer: fine) {
+        .orbit-art:hover .orbit-emblem {
+            transform: translateY(-8px);
+        }
+        .orbit-art:hover .orbit-glint {
+            stroke-dashoffset: -270;
+        }
+    }
+
+    /* 整张作品卡只有一个链接，标题和说明共同交代访问目的。 */
+    .project-card {
+        display: block;
+        min-width: 0;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--surface);
+        box-shadow: 0 6px 20px var(--card-shadow);
+        transition:
+            transform 300ms ease,
+            box-shadow 300ms ease;
+
+        @media (hover: hover) {
+            &:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 40px var(--card-shadow);
+            }
+            &:hover .link-icon {
+                transform: translateX(3px);
+            }
+            &:hover .project-illustration {
+                transform: translateY(-5px) scale(1.035);
+            }
+            &:hover .project-art::after {
+                opacity: 0.8;
+            }
+        }
+    }
+    .project-aura {
+        --ink: #203456;
+        --muted: #455b7c;
+        --accent: #3159be;
+        --line: #cbd8f0;
+        color: var(--ink);
+        background: linear-gradient(120deg, #eff8fd, #f5f0fc);
+
+        .project-illustration {
+            transform: scale(1.23);
+        }
+        @media (hover: hover) {
+            &:hover .project-illustration {
+                transform: translateY(-3px) rotate(-1.5deg) scale(1.26);
+            }
+        }
+    }
+    .project-blog {
+        --ink: #eef4ff;
+        --muted: #b1c1d8;
+        --accent: #a3def2;
+        --line: #31415f;
+        color: var(--ink);
+        background: #131e32;
+
+        .project-info h3 {
+            font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+            font-weight: 600;
+            letter-spacing: -0.05em;
+        }
+    }
+    .project-art {
+        height: clamp(14rem, 26vw, 18rem);
+        display: grid;
+        place-items: center;
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            opacity: 0.25;
+            background: radial-gradient(ellipse at 50% 75%, light-dark(#ffffff, #a7a9eb55), transparent 65%);
+            transition: opacity 300ms ease;
+        }
+    }
+    .project-illustration {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: transform 400ms ease;
+    }
+    .project-info {
+        container-type: inline-size;
+        padding: 1.75rem;
+
+        h3 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: min(2.125rem, 32cqw);
+            font-weight: 500;
+            letter-spacing: -0.025em;
+        }
+        h3 > span {
+            display: inline-block;
+            margin-left: 0.5rem;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+            font-size: 1rem;
+            letter-spacing: normal;
+        }
+        p {
+            margin-top: 0.75rem;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+        @media (width < 48rem) {
+            padding: 1.25rem;
+        }
+    }
+    .project-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.75rem;
+
+        .link-icon {
+            color: var(--accent);
+
+            @container (inline-size < 9rem) {
+                display: none;
+            }
+        }
+    }
+
+    /* Aura 以通透虹彩表达轻盈阅读，Blog 以深色数字表面表达技术写作。 */
+    .reader-art {
+        background:
+            radial-gradient(ellipse at 12% 15%, #b3ede4cc, transparent 60%),
+            radial-gradient(ellipse at 90% 20%, #f5c4ddd9, transparent 60%),
+            radial-gradient(ellipse at 85% 95%, #fae0b9e6, transparent 55%),
+            radial-gradient(ellipse at 25% 100%, #c3bcf4cc, transparent 65%), #edf3fc;
+    }
+    .writing-art {
+        background:
+            radial-gradient(ellipse at 80% 15%, #385d8055, transparent 60%), linear-gradient(145deg, #1d2d49, #0e1729);
+    }
+}
+
+@layer accessibility {
+    /* 辅助说明不占布局，跳转入口在获得焦点时显现。 */
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+        border: 0;
+    }
+    .skip-link {
+        position: fixed;
+        top: 0.7rem;
+        left: 0.7rem;
+        z-index: 10;
+        padding: 0.7rem 1rem;
+        background: var(--surface);
+        color: var(--ink);
+        border-radius: 0.6rem;
+        transform: translateY(-200%);
+
+        &:focus {
+            transform: none;
+        }
+    }
+
+    /* 系统偏好和输出介质优先于页面装饰。 */
+    @media (prefers-reduced-motion: reduce) {
+        :root {
+            scroll-behavior: auto;
+        }
+        *,
+        *::before,
+        *::after {
+            transition: none !important;
+            animation: none !important;
+        }
+    }
+    @media (forced-colors: active) {
+        .name {
+            color: CanvasText;
+            background: none;
+        }
+        .theme-choice:has(input:checked) {
+            border-color: Highlight;
+            color: Highlight;
+        }
+        .ambient,
+        .orbit-art,
+        .project-art {
+            display: none;
+        }
+        .project-card,
+        .theme-switcher {
+            border: 1px solid ButtonText;
+        }
+    }
+    @media print {
+        :root {
+            color-scheme: light;
+        }
+        .ambient,
+        .orbit-art,
+        .theme-switcher,
+        .skip-link,
+        .project-art {
+            display: none;
+        }
+        .hero {
+            padding-block: 2rem;
+        }
+        .project-card {
+            --ink: #252d42;
+            --muted: #647084;
+            --accent: #535eb4;
+            color: var(--ink);
+            background: white;
+            box-shadow: none;
+            break-inside: avoid;
+        }
+        .name {
+            color: var(--ink);
+            background: none;
+        }
+        .project-grid {
+            gap: 1rem;
+        }
+    }
+}

@@ -1,0 +1,17 @@
+# Copyright 2026 allurx
+# SPDX-License-Identifier: Apache-2.0
+
+node_modules/
+dist/
+.wrangler/
+.vite/
+/work/
+
+.env
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*
+
+*.log
+.DS_Store

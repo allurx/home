@@ -1,0 +1,103 @@
+<!-- Copyright (c) 2026 allurx -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none">
+    <defs>
+        <linearGradient id="back-glass" x1="80" y1="57" x2="520" y2="291" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#75d5ee" stop-opacity=".28" />
+            <stop offset=".48" stop-color="#253753" stop-opacity=".6" />
+            <stop offset="1" stop-color="#7466b7" stop-opacity=".36" />
+        </linearGradient>
+        <linearGradient id="depth" x1="140" y1="222" x2="524" y2="289" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#173b4c" />
+            <stop offset=".52" stop-color="#314e71" />
+            <stop offset="1" stop-color="#142238" />
+        </linearGradient>
+        <linearGradient id="screen" x1="6" y1="0" x2="331" y2="245" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#2e4a63" />
+            <stop offset=".43" stop-color="#17273f" />
+            <stop offset="1" stop-color="#101b30" />
+        </linearGradient>
+        <linearGradient id="edge" x1="28" y1="0" x2="340" y2="210" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#c2f4ff" stop-opacity=".9" />
+            <stop offset=".38" stop-color="#6aa5c5" stop-opacity=".4" />
+            <stop offset="1" stop-color="#8d87c8" stop-opacity=".6" />
+        </linearGradient>
+        <linearGradient id="code" x1="61" y1="57" x2="277" y2="147" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#b8f1f1" />
+            <stop offset=".5" stop-color="#99cee6" />
+            <stop offset="1" stop-color="#b6b7ff" />
+        </linearGradient>
+        <linearGradient id="sheen" x1="0" y1="0" x2="255" y2="204" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#c1f3ff" stop-opacity=".11" />
+            <stop offset="1" stop-color="#c1f3ff" stop-opacity="0" />
+        </linearGradient>
+        <radialGradient id="ambient">
+            <stop stop-color="#53a6bd" stop-opacity=".18" />
+            <stop offset="1" stop-color="#53a6bd" stop-opacity="0" />
+        </radialGradient>
+        <filter id="shadow" x="-30%" y="-180%" width="160%" height="460%">
+            <feGaussianBlur stdDeviation="13" />
+        </filter>
+        <filter id="code-glow" x="-30%" y="-40%" width="160%" height="180%">
+            <feGaussianBlur stdDeviation="7" />
+        </filter>
+    </defs>
+
+    <ellipse cx="313" cy="188" rx="269" ry="166" fill="url(#ambient)" />
+    <ellipse cx="329" cy="308" rx="173" ry="16" fill="#020b1c" opacity=".6" filter="url(#shadow)" />
+
+    <!-- An offset glass plane exposes the depth behind the reading surface. -->
+    <path
+        d="M93 78L447 34C456 33 462 39 464 47L507 223C510 232 505 239 496 241L140 290C131 291 125 286 123 277L81 95C79 86 84 80 93 78Z"
+        fill="url(#back-glass)"
+        stroke="#83b5d0"
+        stroke-opacity=".37"
+        stroke-width="1.5"
+    />
+    <path d="M95 79L446 35" stroke="#b7eaf5" stroke-opacity=".6" stroke-width="1.5" stroke-linecap="round" />
+
+    <path
+        d="M116 111L486 59L530 242L535 255C537 262 533 267 526 269L174 318C168 319 163 315 161 309Z"
+        fill="url(#depth)"
+    />
+    <path
+        d="M164 306L174 318L526 269C533 267 537 262 535 255"
+        stroke="#7593bf"
+        stroke-opacity=".38"
+        stroke-width="1.5"
+    />
+
+    <g transform="matrix(1 -.14 .22 1 111 98)">
+        <rect width="377" height="204" rx="14" fill="url(#screen)" stroke="url(#edge)" stroke-width="1.7" />
+        <path d="M14 1H296L120 203H14C7 203 1 197 1 190V14C1 7 7 1 14 1Z" fill="url(#sheen)" />
+        <path d="M20 1H357" stroke="#c8f3ff" stroke-opacity=".55" stroke-linecap="round" />
+
+        <!-- Large code strokes keep the technical silhouette readable at card size. -->
+        <path
+            d="M112 57L62 98L112 139M239 57L289 98L239 139M199 38L153 158"
+            stroke="#7fbfdc"
+            stroke-opacity=".2"
+            stroke-width="15"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            filter="url(#code-glow)"
+        />
+        <path
+            d="M111 61L64 100L111 139M240 61L287 100L240 139M200 43L155 157"
+            stroke="#081525"
+            stroke-opacity=".7"
+            stroke-width="13"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        />
+        <path
+            d="M111 55L64 94L111 133M240 55L287 94L240 133M199 37L154 151"
+            stroke="url(#code)"
+            stroke-width="11"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        />
+        <path d="M62 175H127" stroke="#dfb1d9" stroke-opacity=".85" stroke-width="6" stroke-linecap="round" />
+        <path d="M143 175H236" stroke="#a3cbb1" stroke-opacity=".8" stroke-width="6" stroke-linecap="round" />
+        <path d="M252 175H309" stroke="#99cee6" stroke-opacity=".35" stroke-width="6" stroke-linecap="round" />
+    </g>
+</svg>

@@ -1,0 +1,128 @@
+<!-- Copyright (c) 2026 allurx -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none">
+    <defs>
+        <radialGradient id="cool-glow">
+            <stop stop-color="#6cdece" stop-opacity=".46" />
+            <stop offset="1" stop-color="#83cafa" stop-opacity="0" />
+        </radialGradient>
+        <radialGradient id="rose-glow">
+            <stop stop-color="#e9abdf" stop-opacity=".48" />
+            <stop offset="1" stop-color="#c6b0ed" stop-opacity="0" />
+        </radialGradient>
+        <radialGradient id="warm-glow">
+            <stop stop-color="#f7d693" stop-opacity=".42" />
+            <stop offset="1" stop-color="#f7d693" stop-opacity="0" />
+        </radialGradient>
+        <linearGradient id="cover" x1="7" y1="14" x2="172" y2="205" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#ecfff9" />
+            <stop offset=".23" stop-color="#ccece8" />
+            <stop offset=".48" stop-color="#e0ddf7" />
+            <stop offset=".74" stop-color="#f3dce8" />
+            <stop offset="1" stop-color="#ffeccf" />
+        </linearGradient>
+        <radialGradient id="cover-light" cx="147" cy="32" r="158" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#fffef4" stop-opacity=".96" />
+            <stop offset=".58" stop-color="#fffef4" stop-opacity=".34" />
+            <stop offset="1" stop-color="#fffef4" stop-opacity="0" />
+        </radialGradient>
+        <linearGradient id="spine" x1="4" y1="0" x2="18" y2="211" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#93dcd7" />
+            <stop offset=".27" stop-color="#9ac8e5" />
+            <stop offset=".55" stop-color="#bba9e4" />
+            <stop offset=".81" stop-color="#e7b5d0" />
+            <stop offset="1" stop-color="#efccaa" />
+        </linearGradient>
+        <linearGradient id="edge" x1="20" y1="13" x2="187" y2="220" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#c4d9e0" />
+            <stop offset=".52" stop-color="#fffcf3" />
+            <stop offset="1" stop-color="#ded4df" />
+        </linearGradient>
+        <linearGradient id="rim" x1="2" y1="34" x2="182" y2="220" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#a8d7df" />
+            <stop offset=".5" stop-color="#c0b7e8" />
+            <stop offset="1" stop-color="#e9b6ca" />
+        </linearGradient>
+        <linearGradient id="ribbon" x1="133" y1="196" x2="151" y2="247" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#a197dd" />
+            <stop offset=".46" stop-color="#d9b1da" />
+            <stop offset="1" stop-color="#f1cba4" />
+        </linearGradient>
+        <linearGradient id="imprint" x1="63" y1="153" x2="133" y2="68" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#93bfc7" stop-opacity=".5" />
+            <stop offset=".52" stop-color="#b1a4d0" stop-opacity=".4" />
+            <stop offset="1" stop-color="#d1aebe" stop-opacity=".55" />
+        </linearGradient>
+        <clipPath id="cover-clip">
+            <rect width="180" height="211" rx="12" />
+        </clipPath>
+        <filter id="shadow" x="-40%" y="-180%" width="180%" height="460%">
+            <feGaussianBlur stdDeviation="12" />
+        </filter>
+    </defs>
+
+    <ellipse cx="223" cy="144" rx="191" ry="139" fill="url(#cool-glow)" />
+    <ellipse cx="425" cy="142" rx="191" ry="139" fill="url(#rose-glow)" />
+    <ellipse cx="326" cy="241" rx="215" ry="113" fill="url(#warm-glow)" />
+    <ellipse cx="321" cy="313" rx="95" ry="12" fill="#6d688e" opacity=".16" filter="url(#shadow)" />
+
+    <!-- The shared projection keeps the cover, narrow page block, and spine aligned. -->
+    <g transform="matrix(1 -.18 .12 1 204 76)">
+        <rect x="5" y="9" width="182" height="214" rx="12" fill="url(#rim)" />
+        <path
+            d="M18 9H175C181 9 186 14 186 20V207C186 214 181 219 174 219H20C14 219 10 215 10 209V18C10 13 13 9 18 9Z"
+            fill="url(#edge)"
+        />
+        <path
+            d="M179 20V204C179 210 176 214 170 214H23"
+            stroke="#fffcf7"
+            stroke-opacity=".86"
+            stroke-width="1.5"
+            stroke-linecap="round"
+        />
+        <path
+            d="M183 23V206C183 213 179 217 172 217H25"
+            stroke="#c7bed1"
+            stroke-opacity=".48"
+            stroke-width="1"
+            stroke-linecap="round"
+        />
+
+        <path d="M134 197L150 194L151 244L142 237L135 246Z" fill="url(#ribbon)" />
+        <path d="M138 212L139 237" stroke="#fff0e6" stroke-opacity=".6" stroke-width="1.5" stroke-linecap="round" />
+
+        <rect width="180" height="211" rx="12" fill="url(#cover)" />
+        <g clip-path="url(#cover-clip)">
+            <rect width="180" height="211" fill="url(#cover-light)" />
+            <path d="M0 0H17V211H0Z" fill="url(#spine)" />
+            <path d="M18 0V211" stroke="#fffef7" stroke-opacity=".72" stroke-width="1.5" />
+            <path d="M1 7V202" stroke="#f0fff9" stroke-opacity=".72" stroke-width="1.5" />
+        </g>
+        <rect
+            x=".75"
+            y=".75"
+            width="178.5"
+            height="209.5"
+            rx="11.25"
+            stroke="#fffef7"
+            stroke-opacity=".52"
+            stroke-width="1.5"
+        />
+
+        <!-- A single quiet impression suggests a page lifting from the cover. -->
+        <path
+            d="M63 151C67 105 91 76 133 67C115 90 105 115 105 148"
+            stroke="#fffef8"
+            stroke-opacity=".8"
+            stroke-width="2.4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        />
+        <path
+            d="M63 153C67 107 91 78 133 69C115 92 105 117 105 150"
+            stroke="url(#imprint)"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        />
+    </g>
+</svg>

@@ -1,0 +1,108 @@
+<!-- Copyright (c) 2026 allurx -->
+<svg xmlns="http://www.w3.org/2000/svg">
+    <symbol id="background" viewBox="0 0 440 400" fill="none">
+        <defs>
+            <radialGradient id="orbit-glow">
+                <stop stop-color="#9993de" stop-opacity="0.5" />
+                <stop offset="1" stop-color="#9993de" stop-opacity="0" />
+            </radialGradient>
+            <linearGradient id="orbit-ring" x1="40" y1="300" x2="400" y2="100" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#92b6ed" />
+                <stop offset="0.45" stop-color="#9a8bdf" />
+                <stop offset="1" stop-color="#dcbca7" />
+            </linearGradient>
+            <radialGradient id="orbit-shadow">
+                <stop stop-color="#465078" stop-opacity="0.3" />
+                <stop offset="1" stop-color="#465078" stop-opacity="0" />
+            </radialGradient>
+        </defs>
+        <circle cx="220" cy="200" r="195" fill="url(#orbit-glow)" />
+        <ellipse cx="226" cy="334" rx="125" ry="28" fill="url(#orbit-shadow)" />
+        <ellipse
+            cx="220"
+            cy="200"
+            rx="185"
+            ry="76"
+            transform="rotate(-28 220 200)"
+            stroke="url(#orbit-ring)"
+            stroke-width="1.5"
+            opacity="0.5"
+        />
+        <ellipse
+            cx="220"
+            cy="200"
+            rx="166"
+            ry="109"
+            transform="rotate(48 220 200)"
+            stroke="url(#orbit-ring)"
+            opacity="0.22"
+        />
+    </symbol>
+    <symbol id="emblem" viewBox="0 0 440 400" fill="none">
+        <defs>
+            <linearGradient id="orbit-glass" x1="140" y1="120" x2="305" y2="295" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#ffffff" />
+                <stop offset="0.52" stop-color="#d5daf3" />
+                <stop offset="1" stop-color="#a2aed8" />
+            </linearGradient>
+            <linearGradient id="orbit-rim" x1="140" y1="120" x2="300" y2="285" gradientUnits="userSpaceOnUse">
+                <stop stop-color="white" stop-opacity="0.95" />
+                <stop offset="0.45" stop-color="white" stop-opacity="0.15" />
+                <stop offset="1" stop-color="#b8b4ed" stop-opacity="0.65" />
+            </linearGradient>
+        </defs>
+        <g transform="rotate(-12 220 200)">
+            <rect x="143" y="133" width="158" height="166" rx="39" fill="var(--orbit-edge)" />
+            <rect x="141" y="119" width="158" height="166" rx="39" fill="url(#orbit-glass)" />
+            <!-- 外部 SVG 的渐变保留固有颜色，通过可继承的填色叠加页面主题。 -->
+            <rect
+                x="141"
+                y="119"
+                width="158"
+                height="166"
+                rx="39"
+                fill="var(--orbit-tint)"
+                stroke="url(#orbit-rim)"
+                stroke-width="1.5"
+            />
+            <path
+                d="M157 153c2-13 11-20 25-20h73"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                opacity="0.5"
+            />
+            <path
+                d="m184 244 36-83 36 83m-59-29h46"
+                stroke="var(--orbit-mark)"
+                stroke-width="9"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+        </g>
+    </symbol>
+    <symbol id="trail" viewBox="0 0 440 400" fill="none">
+        <defs>
+            <linearGradient id="orbit-trail-ring" x1="40" y1="300" x2="400" y2="100" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#92b6ed" />
+                <stop offset="0.45" stop-color="#9a8bdf" />
+                <stop offset="1" stop-color="#dcbca7" />
+            </linearGradient>
+        </defs>
+        <path
+            d="M53 230c-24 58 74 88 193 32 91-43 142-94 137-124"
+            stroke="url(#orbit-trail-ring)"
+            stroke-width="3"
+            stroke-linecap="round"
+        />
+    </symbol>
+    <symbol id="glint" viewBox="0 0 440 400" fill="none">
+        <path
+            d="M53 230c-24 58 74 88 193 32 91-43 142-94 137-124"
+            stroke="var(--orbit-light)"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-dasharray="35 420"
+        />
+    </symbol>
+</svg>
