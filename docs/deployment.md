@@ -4,7 +4,7 @@
 
 ## 首次发布准备
 
-按[共享部署说明](https://github.com/allurx/web-foundation/blob/main/docs/deployment.md#保存部署凭据)配置 `production` Environment 中的 `CLOUDFLARE_API_TOKEN` 和 `CLOUDFLARE_ACCOUNT_ID`，仅允许 `main` 使用该环境。
+按[共享部署说明](https://github.com/allurx/web-foundation/blob/main/docs/deployment.md#保存部署凭据)配置部署凭据及 `production` Environment，仅允许 `main` 使用该环境。本项目的 CI 仅向共享工作流显式传递 `CLOUDFLARE_API_TOKEN`。
 
 核对账户 ID 以及 [wrangler.jsonc](../wrangler.jsonc) 中的 Worker 和域名配置，并确认 Cloudflare 中的 DNS、[Custom Domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) 和重定向规则不会将主域名导向其他站点。
 
@@ -14,7 +14,7 @@
 
 **向 `main` 推送会触发生产部署。** 部署使用同次检查上传的 `dist/` 构建产物；Pull Request 只运行检查。执行结果可在 GitHub Actions 的 `site / verify`、`site / deploy` 和 Cloudflare 控制台中查看，结果核对步骤见[共享部署说明](https://github.com/allurx/web-foundation/blob/main/docs/deployment.md#确认部署结果)。发布后访问 `https://allurx.io`，核对主页与作品链接。
 
-包的版本标签与共享工作流 SHA 须对应同次发布；更新方法见 [Web Foundation 的依赖说明](https://github.com/allurx/web-foundation/blob/main/docs/dependencies.md#基础包和工作流怎样升级)。
+包与共享工作流使用同一次不可变发布的精确版本标签；更新方法见 [Web Foundation 的依赖说明](https://github.com/allurx/web-foundation/blob/main/docs/dependencies.md#基础包和工作流怎样升级)。
 
 ## 本地手动部署
 
