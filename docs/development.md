@@ -2,6 +2,8 @@
 
 本地环境和启动步骤见 [README 的本地预览](../README.md#本地预览)。工程只维护 `main` 分支，开发与发布都使用该分支。
 
+工具版本及 ESLint、Prettier、TypeScript、Vite 通用配置由 [Web Foundation](https://github.com/allurx/web-foundation) 统一维护。工程保留自己的源码范围、许可证构建插件和部署目标；工具升级通过更新基础包及锁文件完成，参见[依赖与更新](https://github.com/allurx/web-foundation/blob/main/docs/dependencies.md)。
+
 ## 检查与构建产物预览
 
 完成修改后，运行完整检查和构建，再通过 Wrangler 预览构建产物：
@@ -26,7 +28,7 @@ npm run preview
 | [public/icons/](../public/icons/)                 | 界面 SVG 图标集合与 favicon          |
 | [public/illustrations/](../public/illustrations/) | 首屏轨道与作品插画                   |
 | [public/](../public/)                             | 分享图片、搜索引擎文件和响应头配置   |
-| [vite.config.mjs](../vite.config.mjs)             | Vite 构建配置                        |
+| [vite.config.ts](../vite.config.ts)               | Vite 构建配置                        |
 | [wrangler.jsonc](../wrangler.jsonc)               | Worker、静态资源和生产域名配置       |
 
 新增作品时，在 `index.html` 中维护名称、说明和真实链接。主要内容直接存在于 HTML 中，关闭 JavaScript 后仍可阅读并访问作品；脚本只增强交互。

@@ -1,17 +1,10 @@
 # 部署
 
-本项目通过 GitHub Actions 将构建产物发布到 Cloudflare Workers Static Assets。本地开发与验证见[开发与内容维护](development.md)。
+本项目使用 [Web Foundation 的共享工作流](https://github.com/allurx/web-foundation/blob/main/docs/deployment.md)，通过 GitHub Actions 将构建产物发布到 Cloudflare Workers Static Assets。本地开发与验证见[开发与内容维护](development.md)。
 
 ## 首次发布准备
 
-在 GitHub 仓库中创建 `production` Environment，并配置以下字段：
-
-| 类型                 | 名称                    | 内容                                             |
-| -------------------- | ----------------------- | ------------------------------------------------ |
-| Environment secret   | `CLOUDFLARE_API_TOKEN`  | 可部署目标 Worker 并管理对应域名绑定的 API token |
-| Environment variable | `CLOUDFLARE_ACCOUNT_ID` | 目标 Cloudflare 账户 ID                          |
-
-令牌创建及账户 ID 获取方式见 [Cloudflare GitHub Actions 部署指南](https://developers.cloudflare.com/workers/ci-cd/external-cicd/github-actions/)。将令牌权限限定在需要的账户和域名范围内，不将令牌值写入仓库。
+按[共享部署说明](https://github.com/allurx/web-foundation/blob/main/docs/deployment.md#保存部署凭据)配置 `production` Environment 中的 `CLOUDFLARE_API_TOKEN` 和 `CLOUDFLARE_ACCOUNT_ID`，仅允许 `main` 使用该环境。
 
 核对账户 ID 以及 [wrangler.jsonc](../wrangler.jsonc) 中的 Worker 和域名配置，并确认 Cloudflare 中的 DNS、[Custom Domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) 和重定向规则不会将主域名导向其他站点。
 
@@ -19,9 +12,9 @@
 
 [CI 工作流](../.github/workflows/ci.yml) 在 `main` 的推送及以 `main` 为目标的 Pull Request 中运行检查，包括 `verify` 和 Wrangler dry-run。
 
-**向 `main` 推送会触发生产部署。** 部署使用同次检查上传的构建产物；Pull Request 只运行检查。
+**向 `main` 推送会触发生产部署。** 部署使用同次检查上传的 `dist/` 构建产物；Pull Request 只运行检查。执行结果可在 GitHub Actions 的 `site / verify`、`site / deploy` 和 Cloudflare 控制台中查看，结果核对步骤见[共享部署说明](https://github.com/allurx/web-foundation/blob/main/docs/deployment.md#确认部署结果)。发布后访问 `https://allurx.io`，核对主页与作品链接。
 
-执行结果可在 GitHub Actions 的 `CI` 工作流和 Cloudflare 控制台中查看；发布后还需访问生产域名，核对主页与作品链接。
+包的版本标签与共享工作流 SHA 须对应同次发布；更新方法见 [Web Foundation 的依赖说明](https://github.com/allurx/web-foundation/blob/main/docs/dependencies.md#基础包和工作流怎样升级)。
 
 ## 本地手动部署
 
