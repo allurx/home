@@ -4,7 +4,7 @@
 
 ## 首次发布准备
 
-按[共享部署说明](https://github.com/allurx/web-foundation/blob/main/docs/deployment.md#保存部署凭据)配置部署凭据及 `production` Environment，仅允许 `main` 使用该环境。本项目的 CI 仅向共享工作流显式传递 `CLOUDFLARE_API_TOKEN`。
+按[共享部署说明](https://github.com/allurx/web-foundation/blob/main/docs/deployment.md#保存部署凭据)配置部署凭据及 `production` Environment，仅允许 `main` 使用该环境。本项目的 CI 使用 `secrets: inherit` 调用共享工作流。
 
 核对账户 ID 以及 [wrangler.jsonc](../wrangler.jsonc) 中的 Worker 和域名配置，并确认 Cloudflare 中的 DNS、[Custom Domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) 和重定向规则不会将主域名导向其他站点。
 
