@@ -31,41 +31,35 @@
             <a class="wordmark" href="/" aria-label="Allurx 首页">
                 <span>allurx<span class="wordmark-dot">.</span></span>
             </a>
-            <div class="header-controls">
-                <nav aria-label="主导航">
-                    <a class="icon-link" href="#projects" aria-label="作品" title="作品">
-                        <svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="/icons/ui.svg#projects" />
-                        </svg>
-                    </a>
-                    <a class="icon-link" href="https://github.com/allurx" aria-label="GitHub" title="GitHub">
-                        <svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="/icons/ui.svg#github" />
-                        </svg>
-                    </a>
-                </nav>
-                <fieldset class="theme-switcher" hidden>
-                    <legend class="sr-only">外观</legend>
-                    <label class="theme-choice" title="跟随系统">
-                        <input class="sr-only" type="radio" name="theme" value="system" aria-label="跟随系统" checked />
-                        <svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="/icons/ui.svg#system" />
-                        </svg>
-                    </label>
-                    <label class="theme-choice" title="浅色">
-                        <input class="sr-only" type="radio" name="theme" value="light" aria-label="浅色" />
-                        <svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="/icons/ui.svg#sun" />
-                        </svg>
-                    </label>
-                    <label class="theme-choice" title="深色">
-                        <input class="sr-only" type="radio" name="theme" value="dark" aria-label="深色" />
-                        <svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="/icons/ui.svg#moon" />
-                        </svg>
-                    </label>
-                </fieldset>
-            </div>
+            <nav aria-label="主导航">
+                <a class="nav-link" href="#projects">作品</a>
+                <a class="icon-link" href="https://github.com/allurx" aria-label="GitHub" title="GitHub">
+                    <svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <use href="/icons/ui.svg#github" />
+                    </svg>
+                </a>
+            </nav>
+            <fieldset class="theme-switcher" disabled>
+                <legend class="sr-only">外观</legend>
+                <label class="theme-choice" title="跟随系统">
+                    <input class="sr-only" type="radio" name="theme" value="system" aria-label="跟随系统" checked />
+                    <svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <use href="/icons/ui.svg#system" />
+                    </svg>
+                </label>
+                <label class="theme-choice" title="浅色">
+                    <input class="sr-only" type="radio" name="theme" value="light" aria-label="浅色" />
+                    <svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <use href="/icons/ui.svg#sun" />
+                    </svg>
+                </label>
+                <label class="theme-choice" title="深色">
+                    <input class="sr-only" type="radio" name="theme" value="dark" aria-label="深色" />
+                    <svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <use href="/icons/ui.svg#moon" />
+                    </svg>
+                </label>
+            </fieldset>
         </header>
         <main id="main" class="shell" tabindex="-1">
             <section class="hero" aria-labelledby="intro-title">
@@ -92,6 +86,31 @@
                 </div>
                 <div class="project-grid">
                     <a
+                        class="project-card project-playground"
+                        href="https://play.allurx.io/"
+                        aria-labelledby="playground-title"
+                        aria-describedby="playground-description"
+                    >
+                        <div class="project-art playground-art" aria-hidden="true">
+                            <img
+                                class="project-illustration"
+                                src="/illustrations/playground.svg"
+                                width="640"
+                                height="360"
+                                alt=""
+                            />
+                        </div>
+                        <div class="project-info">
+                            <div class="project-heading">
+                                <h3 id="playground-title">Playground <span>创意游乐场</span></h3>
+                                <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                    <use href="/icons/ui.svg#arrow-right" />
+                                </svg>
+                            </div>
+                            <p id="playground-description">探索互动小作品，从拨动小小海湾的水面开始。</p>
+                        </div>
+                    </a>
+                    <a
                         class="project-card project-aura"
                         href="https://aura.allurx.io/"
                         aria-labelledby="aura-title"
@@ -113,7 +132,7 @@
                                     <use href="/icons/ui.svg#arrow-right" />
                                 </svg>
                             </div>
-                            <p id="aura-description">打开一本书，让注意力回到文字本身。</p>
+                            <p id="aura-description">导入自己的 TXT 或 EPUB，接着上次的位置阅读。</p>
                         </div>
                     </a>
                     <a

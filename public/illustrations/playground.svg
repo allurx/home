@@ -1,0 +1,126 @@
+<!-- Copyright (c) 2026 allurx -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none">
+    <defs>
+        <radialGradient id="ambient">
+            <stop stop-color="#fffbea" stop-opacity=".95" />
+            <stop offset="1" stop-color="#fffbea" stop-opacity="0" />
+        </radialGradient>
+        <linearGradient id="platform" x1="181" y1="256" x2="465" y2="300" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#fdf9e9" />
+            <stop offset="1" stop-color="#e9d9c0" />
+        </linearGradient>
+        <linearGradient id="arch" x1="232" y1="100" x2="360" y2="272" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#efb090" />
+            <stop offset=".48" stop-color="#df8a71" />
+            <stop offset="1" stop-color="#c76c58" />
+        </linearGradient>
+        <linearGradient id="arch-depth" x1="264" y1="80" x2="374" y2="250" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#b86450" />
+            <stop offset="1" stop-color="#995347" />
+        </linearGradient>
+        <linearGradient id="cube" x1="163" y1="207" x2="239" y2="289" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#b9d9c6" />
+            <stop offset="1" stop-color="#7bab9a" />
+        </linearGradient>
+        <linearGradient id="rail" x1="155" y1="145" x2="475" y2="271" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#d2a44d" />
+            <stop offset=".46" stop-color="#f2d591" />
+            <stop offset="1" stop-color="#b78b3d" />
+        </linearGradient>
+        <radialGradient id="ball" cx=".32" cy=".25" r=".75">
+            <stop stop-color="#ffe9ab" />
+            <stop offset=".5" stop-color="#e9be65" />
+            <stop offset="1" stop-color="#c48b3c" />
+        </radialGradient>
+        <radialGradient id="small-ball" cx=".3" cy=".25" r=".8">
+            <stop stop-color="#d1e5e3" />
+            <stop offset=".55" stop-color="#8bbdbb" />
+            <stop offset="1" stop-color="#568f96" />
+        </radialGradient>
+        <filter id="shadow" x="-30%" y="-160%" width="160%" height="420%"><feGaussianBlur stdDeviation="10" /></filter>
+        <filter id="contact" x="-30%" y="-120%" width="160%" height="340%"><feGaussianBlur stdDeviation="3" /></filter>
+    </defs>
+
+    <ellipse cx="310" cy="173" rx="233" ry="167" fill="url(#ambient)" />
+    <ellipse cx="321" cy="307" rx="162" ry="16" fill="#947d63" opacity=".2" filter="url(#shadow)" />
+
+    <!-- A shallow play tray connects the separate objects into one small world. -->
+    <path d="M151 270C151 245 489 245 489 270V282C489 309 151 309 151 282Z" fill="#d7c4a8" />
+    <ellipse cx="320" cy="270" rx="169" ry="29" fill="url(#platform)" />
+    <path d="M154 270C154 293 486 293 486 270" stroke="#fffcef" stroke-opacity=".8" stroke-width="1.5" />
+
+    <!-- The rail passes behind the arch and reappears in front of its opening. -->
+    <path
+        d="M168 226C105 187 135 148 207 149C275 150 348 122 409 146C457 165 476 197 464 224"
+        stroke="#b79452"
+        stroke-opacity=".25"
+        stroke-width="10"
+        stroke-linecap="round"
+    />
+    <path
+        d="M168 222C105 183 135 144 207 145C275 146 348 118 409 142C457 161 476 193 464 220"
+        stroke="url(#rail)"
+        stroke-width="7"
+        stroke-linecap="round"
+    />
+    <path d="M436 170V266M155 192V260" stroke="#bc9b62" stroke-width="5" stroke-linecap="round" />
+    <ellipse cx="303" cy="267" rx="76" ry="9" fill="#8c5545" opacity=".17" filter="url(#contact)" />
+
+    <path d="M238 253V146a69 69 0 0 1 138 0v107h-38V146a31 31 0 0 0-62 0v107Z" fill="url(#arch-depth)" />
+    <path d="m359 265 17-12h-38l-17 12M221 265l17-12h38l-17 12" fill="#ad5e4b" />
+    <path d="M221 265V158a69 69 0 0 1 138 0v107h-38V158a31 31 0 0 0-62 0v107Z" fill="url(#arch)" />
+    <path
+        d="M223 245V158a67 67 0 0 1 134 0"
+        stroke="#ffdab8"
+        stroke-opacity=".65"
+        stroke-width="2"
+        stroke-linecap="round"
+    />
+    <path d="M260 253V158a30 30 0 0 1 60 0v92" stroke="#a85848" stroke-opacity=".65" stroke-width="2" />
+    <path
+        d="M239 126a54 54 0 0 1 68-22"
+        stroke="#f8c6a7"
+        stroke-opacity=".55"
+        stroke-width="2"
+        stroke-linecap="round"
+    />
+
+    <ellipse cx="291" cy="89" rx="24" ry="5" fill="#9e6143" opacity=".18" filter="url(#contact)" />
+    <circle cx="288" cy="63" r="27" fill="url(#ball)" />
+    <path d="M272 52a18 18 0 0 1 16-8" stroke="#fff1c3" stroke-opacity=".7" stroke-width="2.5" stroke-linecap="round" />
+
+    <!-- Soft-edged building blocks keep the scene legible at small card sizes. -->
+    <ellipse cx="204" cy="285" rx="51" ry="8" fill="#62857a" opacity=".2" filter="url(#contact)" />
+    <path d="m160 211 29-14 65 17-29 14Z" fill="#d1e5d0" />
+    <path d="m225 228 29-14v63l-29 14Z" fill="#638e82" />
+    <path d="M160 211l65 17v63l-65-16Z" fill="url(#cube)" />
+    <path d="m162 214 60 15v58" stroke="#e6f1d7" stroke-opacity=".65" stroke-width="1.5" stroke-linecap="round" />
+    <circle cx="193" cy="251" r="9" fill="#739f8b" opacity=".55" />
+    <circle cx="191" cy="249" r="8" fill="#c9dfc5" />
+
+    <path
+        d="M365 255c39 15 85 5 99-35"
+        stroke="#b79452"
+        stroke-opacity=".23"
+        stroke-width="10"
+        stroke-linecap="round"
+    />
+    <path
+        d="M260 223c36 14 62 24 105 28 39 15 85 5 99-35"
+        stroke="url(#rail)"
+        stroke-width="7"
+        stroke-linecap="round"
+    />
+    <path
+        d="M367 250c30 10 54 4 71-12"
+        stroke="#fff1c4"
+        stroke-opacity=".7"
+        stroke-width="1.5"
+        stroke-linecap="round"
+    />
+    <circle cx="407" cy="245" r="18" fill="url(#small-ball)" />
+    <path d="M397 237a11 11 0 0 1 10-4" stroke="#e3f0df" stroke-opacity=".75" stroke-width="2" stroke-linecap="round" />
+
+    <path d="m387 102 8-20 8 20 20 8-20 8-8 20-8-20-20-8Z" fill="#f4d894" />
+    <path d="m395 89 5 15 14 6" stroke="#fff7d8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

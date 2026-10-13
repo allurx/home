@@ -118,34 +118,23 @@
 
     /* 页首导航与首屏介绍。 */
     .site-header {
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: 1fr auto auto;
         align-items: center;
-        justify-content: space-between;
         gap: 0.75rem 1rem;
-        padding-block: 1.5rem;
+        padding-block: 1.25rem;
 
         nav {
             display: flex;
-            gap: 0.125rem;
+            gap: 0.25rem;
             align-items: center;
         }
-    }
-    .header-controls {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: end;
-        gap: 0.625rem;
-        margin-inline-start: auto;
-        min-width: 0;
-        max-width: 100%;
     }
     .hero {
         display: grid;
         grid-template-columns: 1.2fr 1fr;
         align-items: center;
-        padding-block: 2.75rem 5rem;
+        padding-block: 1.5rem 3rem;
         gap: 1.5rem;
 
         h1 {
@@ -189,11 +178,11 @@
         }
     }
     .section-heading {
-        margin-bottom: 1.75rem;
+        margin-bottom: 1.25rem;
     }
     .project-grid {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 1.5rem;
     }
     .site-footer {
@@ -212,13 +201,16 @@
     }
 
     /* 根据内容所需空间切换布局，输入方式单独处理。 */
+    @media (38rem <= width < 64rem) {
+        .project-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+    }
     @media (width < 48rem) {
         .hero {
             grid-template-columns: 1fr 0.7fr;
-            padding-block: 3rem 4rem;
-        }
-        .project-grid {
-            gap: 1rem;
+            padding-block: 2rem 3rem;
         }
     }
     @media (width < 38rem) {
@@ -227,7 +219,7 @@
         }
         .hero {
             display: block;
-            padding-block: 2.5rem 3.5rem;
+            padding-block: 1.5rem 2.5rem;
         }
         .hero .orbit-art {
             display: none;
@@ -235,6 +227,16 @@
         .project-grid {
             grid-template-columns: 1fr;
             gap: 1.5rem;
+        }
+    }
+    @media (width < 24rem) {
+        .site-header {
+            grid-template-columns: 1fr auto;
+            row-gap: 0.5rem;
+        }
+        .theme-switcher {
+            grid-column: 1 / -1;
+            justify-self: end;
         }
     }
 }
@@ -298,6 +300,22 @@
             }
         }
     }
+    .nav-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 2.75rem;
+        padding-inline: 0.75rem;
+        border-radius: 2rem;
+        font-weight: 500;
+
+        @media (hover: hover) {
+            &:hover {
+                color: var(--accent);
+                background: var(--soft);
+            }
+        }
+    }
     .link-icon {
         width: 1.25rem;
         height: 1.25rem;
@@ -320,6 +338,11 @@
         border: 1px solid var(--line);
         border-radius: 2rem;
         background: var(--soft);
+
+        /* 初始化前保留控件尺寸，避免刷新恢复滚动位置时页面高度变化。 */
+        &:disabled {
+            visibility: hidden;
+        }
     }
     .theme-choice {
         position: relative;
@@ -362,7 +385,7 @@
         --orbit-mark: light-dark(#5365a4, #edf0ff);
         position: relative;
         width: 100%;
-        max-width: 27rem;
+        max-width: 22rem;
         aspect-ratio: 1.1;
         justify-self: end;
     }
@@ -396,6 +419,11 @@
             transform 300ms ease,
             box-shadow 300ms ease;
 
+        @media (38rem <= width < 64rem) {
+            display: grid;
+            grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+            align-items: center;
+        }
         @media (hover: hover) {
             &:hover {
                 transform: translateY(-5px);
@@ -421,11 +449,11 @@
         background: linear-gradient(120deg, #eff8fd, #f5f0fc);
 
         .project-illustration {
-            transform: scale(1.23);
+            transform: scale(1.08);
         }
         @media (hover: hover) {
             &:hover .project-illustration {
-                transform: translateY(-3px) rotate(-1.5deg) scale(1.26);
+                transform: translateY(-3px) rotate(-1.5deg) scale(1.11);
             }
         }
     }
@@ -439,18 +467,30 @@
 
         .project-info h3 {
             font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
-            font-weight: 600;
+            font-weight: 500;
             letter-spacing: -0.05em;
         }
     }
+    .project-playground {
+        --ink: #4e342b;
+        --muted: #795d50;
+        --accent: #a35339;
+        --line: #e7ccbb;
+        color: var(--ink);
+        background: #fbf0e4;
+    }
     .project-art {
-        height: clamp(14rem, 26vw, 18rem);
+        height: clamp(10rem, 18vw, 13rem);
         display: grid;
         place-items: center;
         position: relative;
         overflow: hidden;
         isolation: isolate;
 
+        @media (38rem <= width < 64rem) {
+            height: 100%;
+            min-height: 12rem;
+        }
         &::after {
             content: "";
             position: absolute;
@@ -469,7 +509,7 @@
     }
     .project-info {
         container-type: inline-size;
-        padding: 1.75rem;
+        padding: 1.5rem;
 
         h3 {
             font-family: Georgia, "Times New Roman", serif;
@@ -478,8 +518,8 @@
             letter-spacing: -0.025em;
         }
         h3 > span {
-            display: inline-block;
-            margin-left: 0.5rem;
+            display: block;
+            margin-top: 0.5rem;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
             font-size: 1rem;
             letter-spacing: normal;
@@ -508,7 +548,7 @@
         }
     }
 
-    /* Aura 以通透虹彩表达轻盈阅读，Blog 以深色数字表面表达技术写作。 */
+    /* 每张作品卡以独立配色和主体插画表达用途。 */
     .reader-art {
         background:
             radial-gradient(ellipse at 12% 15%, #b3ede4cc, transparent 60%),
@@ -519,6 +559,11 @@
     .writing-art {
         background:
             radial-gradient(ellipse at 80% 15%, #385d8055, transparent 60%), linear-gradient(145deg, #1d2d49, #0e1729);
+    }
+    .playground-art {
+        background:
+            radial-gradient(ellipse at 15% 15%, #e3edcc, transparent 65%),
+            radial-gradient(ellipse at 90% 75%, #f7cbb8, transparent 65%), #f9ecda;
     }
 }
 
@@ -581,6 +626,9 @@
         .theme-switcher {
             border: 1px solid ButtonText;
         }
+        .project-card {
+            display: block;
+        }
     }
     @media print {
         :root {
@@ -600,6 +648,7 @@
             --ink: #252d42;
             --muted: #647084;
             --accent: #535eb4;
+            display: block;
             color: var(--ink);
             background: white;
             box-shadow: none;

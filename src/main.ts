@@ -21,7 +21,6 @@ if (switcher) {
     const restored = document.documentElement.dataset["theme"];
     const theme = restored === "light" || restored === "dark" ? restored : "system";
     for (const option of options) option.checked = option.value === theme;
-    switcher.hidden = false;
 
     switcher.addEventListener("change", (event) => {
         if (!(event.target instanceof HTMLInputElement)) return;
@@ -40,4 +39,6 @@ if (switcher) {
         }
         if (status) status.textContent = `外观已切换为${labels[theme]}`;
     });
+
+    switcher.disabled = false;
 }
