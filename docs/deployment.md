@@ -10,11 +10,11 @@
 
 ## GitHub Actions 自动部署
 
-[CI 工作流](../.github/workflows/ci.yml) 在 `main` 的推送及以 `main` 为目标的 Pull Request 中运行检查，包括 `verify` 和 Wrangler dry-run。
+[CI 工作流](../.github/workflows/ci.yml) 在 `main` 的推送、显式派发及以 `main` 为目标的 Pull Request 中运行检查，包括 `verify` 和 Wrangler dry-run。
 
-**向 `main` 推送会触发生产部署。** 部署使用同次检查上传的 `dist/` 构建产物；Pull Request 只运行检查。执行结果可在 GitHub Actions 的 `site / verify`、`site / deploy` 和 Cloudflare 控制台中查看，结果核对步骤见[共享部署说明](https://github.com/allurx/web-foundation/blob/main/docs/deployment.md#确认部署结果)。发布后访问 `https://allurx.io`，核对主页与作品链接。
+**向 `main` 推送或在该分支运行 `workflow_dispatch` 会触发生产部署。** 部署使用同次检查上传的 `dist/` 构建产物；Pull Request 只运行检查。执行结果可在 GitHub Actions 的 `site / verify`、`site / deploy` 和 Cloudflare 控制台中查看，结果核对步骤见[共享部署说明](https://github.com/allurx/web-foundation/blob/main/docs/deployment.md#确认部署结果)。发布后访问 `https://allurx.io`，核对主页与作品链接。
 
-包与共享工作流使用同一次不可变发布的精确版本标签；更新方法见 [Web Foundation 的依赖说明](https://github.com/allurx/web-foundation/blob/main/docs/dependencies.md#基础包和工作流怎样升级)。
+共享工作流跟随 Web Foundation 的 `main`，基础包继续固定不可变发布标签和锁文件。符合共享策略的依赖 PR 通过站点验证后自动合入 `main`，再显式派发一次 CI，重新验证并部署实际的主分支提交。更新范围与失败处理见 [Web Foundation 的依赖说明](https://github.com/allurx/web-foundation/blob/main/docs/dependencies.md)。
 
 ## 本地手动部署
 
