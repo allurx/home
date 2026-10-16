@@ -5,7 +5,7 @@
 
 import { readFileSync } from "node:fs";
 import { defineConfig, mergeConfig } from "vite";
-import base from "@allurx/web-foundation/vite";
+import base from "@allurx/js-config/vite";
 
 export default mergeConfig(
     base,

@@ -2,7 +2,7 @@
 
 本地环境和启动步骤见 [README 的本地预览](../README.md#本地预览)。工程只维护 `main` 分支，开发与发布都使用该分支。
 
-工具版本及 ESLint、Prettier、TypeScript、Vite 通用配置由 [Web Foundation](https://github.com/allurx/web-foundation) 统一维护。工程保留自己的源码范围、许可证构建插件和部署目标；工具升级通过更新基础包及锁文件完成，参见[依赖与更新](https://github.com/allurx/web-foundation/blob/main/docs/dependencies.md)。
+ESLint、Prettier、TypeScript、Vite 通用配置由 [JS Config](https://github.com/allurx/allurx-build/tree/main/js-config) 维护，通过 npm 包 `@allurx/js-config` 接入。工程在 [package.json](../package.json) 中直接声明所用工具的精确版本，并保留源码范围、许可证构建插件和部署目标；依赖更新遵循[共享依赖更新指南](https://github.com/allurx/allurx-build/blob/main/docs/dependency-updates.md)。
 
 ## 检查与构建产物预览
 

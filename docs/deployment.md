@@ -1,10 +1,10 @@
 # 部署
 
-本项目使用 [Web Foundation 的共享工作流](https://github.com/allurx/web-foundation/blob/main/docs/deployment.md)，通过 GitHub Actions 将构建产物发布到 Cloudflare Workers Static Assets。本地开发与验证见[开发与内容维护](development.md)。
+本项目使用 [allurx-build 的共享工作流](https://github.com/allurx/allurx-build/blob/main/docs/cloudflare-static-site.md)，通过 GitHub Actions 将构建产物发布到 Cloudflare Workers Static Assets。本地开发与验证见[开发与内容维护](development.md)。
 
 ## 首次发布准备
 
-按[共享部署说明](https://github.com/allurx/web-foundation/blob/main/docs/deployment.md#保存部署凭据)配置部署凭据及 `production` Environment，仅允许 `main` 使用该环境。本项目的 CI 使用 `secrets: inherit` 调用共享工作流。
+按[共享部署说明](https://github.com/allurx/allurx-build/blob/main/docs/cloudflare-static-site.md)配置部署凭据及 `production` Environment，仅允许 `main` 使用该环境。本项目的 CI 使用 `secrets: inherit` 调用共享工作流。
 
 核对账户 ID 以及 [wrangler.jsonc](../wrangler.jsonc) 中的 Worker 和域名配置，并确认 Cloudflare 中的 DNS、[Custom Domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) 和重定向规则不会将主域名导向其他站点。
 
@@ -12,9 +12,9 @@
 
 [CI 工作流](../.github/workflows/ci.yml) 在 `main` 的推送、显式派发及以 `main` 为目标的 Pull Request 中运行检查，包括 `verify` 和 Wrangler dry-run。
 
-**向 `main` 推送或在该分支运行 `workflow_dispatch` 会触发生产部署。** 部署使用同次检查上传的 `dist/` 构建产物；Pull Request 只运行检查。执行结果可在 GitHub Actions 的 `site / verify`、`site / deploy` 和 Cloudflare 控制台中查看，结果核对步骤见[共享部署说明](https://github.com/allurx/web-foundation/blob/main/docs/deployment.md#确认部署结果)。发布后访问 `https://allurx.io`，核对主页与作品链接。
+**向 `main` 推送或在该分支运行 `workflow_dispatch` 会触发生产部署。** 部署使用同次检查上传的 `dist/` 构建产物；Pull Request 只运行检查。执行结果可在 GitHub Actions 的 `site / verify`、`site / deploy` 和 Cloudflare 控制台中查看，结果核对步骤见[共享部署说明](https://github.com/allurx/allurx-build/blob/main/docs/cloudflare-static-site.md)。发布后访问 `https://allurx.io`，核对主页与作品链接。
 
-共享工作流跟随 Web Foundation 的 `main`，基础包继续固定不可变发布标签和锁文件。符合共享策略的依赖 PR 通过站点验证后自动合入 `main`，再显式派发一次 CI，重新验证并部署实际的主分支提交。更新范围与失败处理见 [Web Foundation 的依赖说明](https://github.com/allurx/web-foundation/blob/main/docs/dependencies.md)。
+共享工作流固定 allurx-build 的完整 commit SHA，配置包通过 npm 精确版本和锁文件固定。更新通过 PR 审阅；Renovate 按[共享依赖更新指南](https://github.com/allurx/allurx-build/blob/main/docs/dependency-updates.md)处理依赖更新，合入 `main` 后由正常的 push CI 验证并部署实际提交。
 
 ## 本地手动部署
 
