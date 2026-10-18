@@ -1,6 +1,6 @@
 # Home
 
-Allurx 的个人主页与作品入口。目标域名为 `allurx.io`。
+Allurx 的个人主页与作品入口：[allurx.io](https://allurx.io)。
 
 页面使用 HTML、CSS 和 TypeScript，由 [Vite](https://vite.dev/guide/) 构建为静态文件，通过 [Cloudflare Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/) 托管。
 
