@@ -1,4 +1,8 @@
-<!-- Copyright (c) 2026 allurx -->
+<!--
+Copyright 2026 allurx
+SPDX-License-Identifier: Apache-2.0
+-->
+
 <svg xmlns="http://www.w3.org/2000/svg">
     <symbol id="projects" viewBox="0 0 24 24">
         <rect x="3.5" y="3.5" width="6" height="6" rx="1.5" />

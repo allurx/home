@@ -9,6 +9,7 @@ import base, { browser, node, typeChecked } from "@allurx/js-config/eslint";
 export default defineConfig(
     globalIgnores(["dist/", ".wrangler/", ".vite/", "work/"]),
     base,
+
     {
         files: ["src/**/*.ts", "public/**/*.js", "*.ts"],
         extends: [typeChecked],
@@ -16,6 +17,7 @@ export default defineConfig(
             parserOptions: { tsconfigRootDir: import.meta.dirname },
         },
     },
+
     { files: ["src/**/*.ts", "public/**/*.js"], extends: [browser] },
     { files: ["*.ts"], extends: [node] }
 );

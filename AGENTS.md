@@ -5,7 +5,7 @@
 - 工程只维护 `main`，开发与发布都使用该分支。推送前完成集成验证；向 `main` 推送会触发生产部署，操作授权必须覆盖这一实际副作用。
 - 开发入口、验证与内容维护见[开发说明](docs/development.md)，发布准备和执行见[部署说明](docs/deployment.md)。具体命令与 CI 行为分别以 [package.json](package.json) 和 [CI 工作流](.github/workflows/ci.yml) 为准。
 - 个人信息、作品能力、联系方式与上线状态必须有用户输入或实际证据，不虚构内容。配置完成、本地预览和构建通过不能表述为生产已上线；发布结论需核对工作流、Cloudflare 部署结果与实际生产访问。
-- 新增源码按文件语言使用简短版权头 `Copyright (c) 2026 allurx`，保留已有准确的归属信息。许可证由根目录 [LICENSE.txt](LICENSE.txt) 维护。
+- 自有源码与可注释配置按[共享工程约定](https://github.com/allurx/allurx-build/blob/main/docs/node.md)维护简短的 Copyright 与 `SPDX-License-Identifier: Apache-2.0` 文件头，年份和权利人以实际来源为准。保留已有准确的归属和作者信息，不因普通修改更新年份；第三方内容保留原声明。完整许可证由根目录 [LICENSE.txt](LICENSE.txt) 维护。
 
 ## 页面与主题
 

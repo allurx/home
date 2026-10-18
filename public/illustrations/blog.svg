@@ -1,4 +1,8 @@
-<!-- Copyright (c) 2026 allurx -->
+<!--
+Copyright 2026 allurx
+SPDX-License-Identifier: Apache-2.0
+-->
+
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none">
     <defs>
         <linearGradient id="back-glass" x1="80" y1="57" x2="520" y2="291" gradientUnits="userSpaceOnUse">

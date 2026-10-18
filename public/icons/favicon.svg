@@ -1,4 +1,8 @@
-<!-- Copyright (c) 2026 allurx -->
+<!--
+Copyright 2026 allurx
+SPDX-License-Identifier: Apache-2.0
+-->
+
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
     <defs>
         <linearGradient id="surface" x1="5" y1="2" x2="34" y2="40" gradientUnits="userSpaceOnUse">
@@ -12,6 +16,11 @@
         </linearGradient>
     </defs>
     <rect x=".5" y=".5" width="39" height="39" rx="11.5" fill="url(#surface)" stroke="#6779ad" />
-    <path d="M7.2 31.5 17.6 9h5.7L13 31.5Z" fill="#f6f8ff" />
-    <path d="M17.6 9h5.7l10 22.5h-6.4l-2.4-5.8h-8.7l2.3-5.4h4Z" fill="url(#fold)" />
+    <!-- A continuous silhouette keeps the crossbar joined at every display size. -->
+    <path
+        d="M7.2 31.5 17.6 9H23.3L33.3 31.5H26.9L24.5 25.7H15.6551L13 31.5ZM18.1271 20.3H22.1L20.2517 15.6588Z"
+        fill="url(#fold)"
+        fill-rule="evenodd"
+    />
+    <path d="M7.2 31.5 17.6 9 20.2517 15.6588 13 31.5Z" fill="#f6f8ff" />
 </svg>

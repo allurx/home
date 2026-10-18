@@ -13,7 +13,7 @@ npm run verify
 npm run preview
 ```
 
-`verify` 执行 `build`，其中包含格式、ESLint、TypeScript 检查和 Vite 生产构建。`preview` 读取 `dist/`，用于检查 Cloudflare 静态资源；修改源码后需要重新构建。其他命令见 [package.json](../package.json)。
+`check` 执行格式、ESLint 和 TypeScript 检查，`build` 只执行 Vite 生产构建；`verify` 依次执行两者，完成本地与 CI 的完整门禁。`preview` 读取 `dist/`，用于检查 Cloudflare 静态资源；修改源码后需要重新构建。其他命令见 [package.json](../package.json)。
 
 本地开发和预览不需要生产凭据。向 `main` 推送会触发生产部署，推送前应完成验证并核对[部署准备](deployment.md#首次发布准备)。
 
